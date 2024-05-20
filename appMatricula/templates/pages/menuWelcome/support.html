@@ -1,0 +1,47 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+
+{% block contentCard %}
+    <nav class="navbar-menu">
+        <ul>
+            <li class="no-selected-list"><a href="{% url "welcome" %}">Home</a></li>
+            <li class="no-selected-list"><a href="{% url "service" %}">Serviços</a></li>
+            <li class="no-selected-list"><a href="{% url "about_us" %}">Sobre nós</a></li>
+            <li class="selected-list"><a>Suporte</a></li>
+            <li class="no-selected-list"><a href="{% url "contact_us" %}">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="support">
+            <ul>
+                <li>
+                    <img alt="gerenciamento" src="{% static "img/setting.png" %}">
+                    <a href="#">Gerenciamento de conta e preferência</a>
+                </li>
+
+                <li>
+                    <img alt="acessibilidade" src="{% static "img/access.png" %}">
+                    <a href="#">Acessibilidade</a>
+                </li>
+
+                <li>
+                    <img alt="dados e privacidade" src="{% static "img/privacy.png" %}">
+                    <a href="#">Dados e privacidade</a>
+                </li>
+
+                <li>
+                    <img alt="guia do usuário" src="{% static "img/guide.png" %}">
+                    <a href="#">Guia do usuário</a>
+                </li>
+
+                <li>
+                    <img alt="suporte comunitário" src="{% static "img/community.png" %}">
+                    <a href="#">Suporte da comunidade</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}

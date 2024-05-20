@@ -1,0 +1,82 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Cadastro</title>
+{% endblock %}
+
+{% block contentCard %}
+
+    <div class="register-card">
+        <h1>Cadastro</h1>
+            <form class="register-card-form" method="POST">
+                {% csrf_token %}
+                
+                <div class="register-card-form-row-1">
+                    {{escola_form.nome}}
+                    <input type="text" name="cnpj" id="cnpj-mask" maxlength=18 required
+                    placeholder="{% if escola_form.cnpj.errors %}{{ escola_form.cnpj.errors|first }}{% else %}CNPJ{% endif %}"
+                    class="{% if escola_form.cnpj.errors %}error{% endif %}">
+                </div>
+                <!--{{user_form.username}}-->
+                <div class="register-card-form-row-1">
+                    <input type="email" name="email" id="id_email" required
+                    placeholder="{% if user_form.email.errors %}{{ user_form.email.errors|first }}{% else %}Email{% endif %}"
+                    class="{% if user_form.email.errors %}error{% endif %}">
+                    
+                    <input type="text" name="telefone" id="mask-telefone" maxlength=14 required
+                    placeholder="{% if escola_form.telefone.errors %}{{ escola_form.telefone.errors|first }}{% else %}telefone{% endif %}"
+                    class="{% if escola_form.telefone.errors %}error{% endif %}">
+                    
+                </div>
+                <div class="register-card-form-row-1">
+                    {{escola_form.dataFundacao}}
+                </div>
+                <div class="register-card-form-row-1">
+                    <input type="text" name="cep" id="mask-cep" maxlength=9 required
+                    placeholder="{% if endereco_form.cep.errors %}{{ endereco_form.cep.errors|first }}{% else %}CEP{% endif %}" required
+                    class="{% if endereco_form.cep.errors %}error{% endif %}">
+                    {{endereco_form.cidade}}
+                </div>
+                <div class="register-card-form-row-1">
+                    <div class="register-card-form-row-endereco">
+                        {{endereco_form.endereco}}
+                    </div>
+                    <div class="register-card-form-row-numero">
+                        {{endereco_form.numero}}
+                    </div>
+                </div>
+                <div class="register-card-form-row-1">
+                    {{endereco_form.bairro}}
+                    {{endereco_form.complemento}}
+                </div>
+                <div class="register-card-form-row-1">
+                    {{user_form.password}}
+                    {{user_form.confirm_password}}
+                </div>
+
+                <!--{% if user_form.errors %}
+                        <p>{{user_form.errors}}</p>
+                {% endif %}        
+
+
+                {% if escola_form.errors %}
+                    <p>{{escola_form.errors}}</p>
+                {% endif %}        
+
+                {% if endereco_form.errors %}
+                    <p>{{endereco_form.errors}}</p>
+                {% endif %} -->
+
+                <input class="btn-cadastrar" type="submit" value="cadastrar!">
+            </form> 
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'script/mask_cnpj.js' %}"></script>
+    <script src="{% static 'script/mask_cep.js' %}"></script>
+    <script src="{% static 'script/mask_number.js' %}"></script>
+    <script src="{% static 'script/mask_bday.js' %}"></script>
+{% endblock %}

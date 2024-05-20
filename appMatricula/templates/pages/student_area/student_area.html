@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    <title>alunos</title>
+{% endblock %}
+
+
+{% block content %}
+<a href= "{% url "logout" %}">logout</a>
+    <nav>
+        <ul>
+            <li><a href="{% url "students" %}">Alunos</a></li>
+            <li><a href="{% url "register_student" %}">cadastrar Aluno</a></li>
+            <li><a href="{% url "search_student" %}">atualiza Aluno</a></li>
+        </ul>
+    </nav>
+
+    {% block content_student %}
+    <div class="show-students">
+        
+        {% for aluno in alunos %}
+            {{aluno.nome}}, {{aluno.matricula}}<br>
+            
+        {% endfor %}
+    </div>
+    
+    {% endblock %}
+    
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/show_content_students.js' %}"></script>
+{% endblock %}

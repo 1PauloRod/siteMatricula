@@ -1,0 +1,48 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+
+{% block contentCard %}
+    <nav class="navbar-menu">
+        <ul>
+            <li class="no-selected-list"><a href="{% url "welcome" %}">Home</a></li>
+            <li class="selected-list"><a>Serviços</a></li>
+            <li class="no-selected-list"><a href="{% url "about_us" %}">Sobre nós</a></li>
+            <li class="no-selected-list"><a href="{% url "support" %}">Suporte</a></li>
+            <li class="no-selected-list"><a href="{% url "contact_us" %}">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+
+        <div class="services">
+            <ul>
+                <li>
+                    <img alt="database logo" src="{% static "img/pin1.png" %}">
+                    <p>Cadastro de alunos</p>
+                </li>
+                <li>
+                    <img alt="database logo" src="{% static "img/pin2.png" %}">
+                    <p>Gerenciamento de turmas</p>
+                </li>
+                <li>
+                    <img alt="database logo" src="{% static "img/pin3.png" %}">
+                    <p>Acompanhamento de frequência</p>
+                </li>
+            </ul>
+          
+            <ul>
+                <li>
+                    <img alt="database logo" src="{% static "img/pin4.png" %}">
+                    <p>Controle de notas e boletins</p>
+                </li>
+                <li>
+                    <img alt="database logo" src="{% static "img/pin5.png" %}">
+                    <p>Controle de pagamento de mensalidade</p>
+                </li>
+
+                
+            </ul>
+        </div>
+    </div>
+{% endblock %}

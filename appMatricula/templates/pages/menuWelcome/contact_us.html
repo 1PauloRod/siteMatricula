@@ -1,0 +1,50 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+
+{% block contentCard %}
+    <nav class="navbar-menu">
+        <ul>
+            <li class="no-selected-list"><a href="{% url "welcome" %}">Home</a></li>
+            <li class="no-selected-list"><a href="{% url "service" %}">Serviços</a></li>
+            <li class="no-selected-list"><a href="{% url "about_us" %}">Sobre nós</a></li>
+            <li class="no-selected-list"><a href="{% url "support" %}">Suporte</a></li>
+            <li class="selected-list"><a>Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content-contact">
+        <div class="contact_us">
+            
+            <img alt="contato" src={% static "img/contact_us.jpg" %}>
+            <ul>
+                <h2>Contate me!</h2>
+                
+                <li>
+                    <img alt="email icon" src="{% static "img/emailIcon.png" %}">
+                    paulotadeubrodrigues@gmail.com
+                </li>
+
+                <li>
+                    <img alt="telefone icon" src="{% static "img/phoneIcon.png" %}">
+                    (21) 985017751
+                </li>
+
+                <li>
+                    <img alt="github icon" src="{% static "img/githubIcon.png" %}">
+                    <a href="https://github.com/1PauloRod/">1PauloRod</a>
+                </li>
+                <div class="divide-lines">
+                    <p>or</p>
+                </div>
+                <div class="social-media">
+                    <img alt="facebook icon" src="{% static "img/facebookIcon.png" %}">
+                    <img alt="instagram icon" src="{% static "img/instagramIcon.png" %}">
+                    <img alt="twitter icon" src="{% static "img/twitterIcon.png" %}">
+                </div>
+            </ul>
+            
+        </div>
+      
+    </div>
+{% endblock %}

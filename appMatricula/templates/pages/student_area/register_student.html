@@ -1,0 +1,47 @@
+{% extends "pages/student_area/student_area.html" %}
+{% load static %}
+
+{% block content_student %}
+<div class="register-students">
+    <form class="form-register-students" method="POST">
+        {% csrf_token %}
+
+        {{alunoForm.nome}}
+        {{alunoForm.aniversario}}
+        {{alunoForm.sexo}}
+        {{alunoForm.telefone}}
+        {{alunoForm.cpf}}
+        {{alunoForm.rg}}
+        {{alunoForm.orgao_emissor}}
+        {{alunoForm.email}}
+        {{alunoForm.mae}}
+        {{alunoForm.pai}}
+       
+        
+        {{alunoEnderecoForm.endereco}}
+        {{alunoEnderecoForm.numero}}
+        {{alunoEnderecoForm.bairro}}
+        {{alunoEnderecoForm.cep}}
+        {{alunoEnderecoForm.cidade}}
+
+        {% if alunoForm.errors %}
+            <p>{{alunoForm.errors}}</p>
+        {% endif %}
+
+        {% if alunoEnderecoForm.errors %}
+            <p>{{alunoEnderecoForm.errors}}</p>
+        {% endif %}
+        
+
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/mask_cep.js' %}"></script>
+    <script src="{% static 'script/mask_cpf.js' %}"></script>
+    <script src="{% static 'script/mask_rg.js' %}"></script>
+    <script src="{% static 'script/mask_number.js' %}"></script>
+    <script src="{% static 'script/mask_bday.js' %}"></script>
+{% endblock %}

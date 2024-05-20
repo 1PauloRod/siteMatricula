@@ -1,0 +1,465 @@
+*{
+    margin: 0;
+    padding: 0;
+   background: #d5f7e6;
+   font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.card-menu{
+    background: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    width: 920px;
+    height: 700px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.navbar-menu{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 70%;
+    background: white;
+}
+
+.navbar-menu ul{
+    background: white;
+    display: inline-flex;
+    
+    list-style-type: none;
+}
+
+.navbar-menu ul li{
+    font-size: 20px;
+    white-space: nowrap;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+
+.navbar-menu ul li a{
+    background: white;
+    color: rgb(15, 99, 31);
+    text-decoration: none;
+}
+
+.selected-list{
+    text-decoration: underline;
+    text-decoration-color: rgb(15, 99, 31);
+}
+
+
+.no-selected-list a:hover{
+    color: #5ae4a8;
+    cursor: pointer;
+}
+
+.database-img{
+    width: 600px;
+}
+
+.main-content{
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 87%;
+}
+
+.main-content h2{
+    background: white;
+    font-size: 32px;
+    
+    color:rgb(10, 83, 24);
+}
+
+.right-content{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 20px;
+}
+
+.main-content h3{
+    background: white;
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 17px;
+    color:rgb(15, 99, 31);
+}
+
+.left-content{
+    background: white;
+    width: 60%;
+}
+
+.btn-get-started{
+    background: #1a2e35;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    width: 50%;
+    height: 15%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    color:#5ae4a8;
+}
+
+.btn-get-started:hover{
+    cursor: pointer;
+    background: #5ae4a8;
+    color: #1a2e35;
+    border: 1px solid black;
+}
+
+.main-content ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    background: white;
+}
+
+.services ul li{
+    border: 3px solid black;
+    border-color: #5ae4a8;
+    border-radius: 15px;
+    width: 190px;
+    height: 150px;
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    text-align: center;
+}
+
+.main-content ul li p{
+    background: white;
+    color:rgb(15, 99, 31);
+}
+
+.main-content ul img{
+    width: 100px;
+    background: white;
+
+}
+
+.services{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.about_us{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    
+}
+
+.about_us p{
+    background: white;
+    margin-top: 15px;
+    width: 70%;
+    font-size: 16px;
+    color: rgb(15, 99, 31);
+
+}
+
+.about_us img{
+    border: 3px solid #5ae4a8;
+    border-radius: 150px;
+    width: 250px;
+    background: white;
+}
+
+.support ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.support ul li{
+    border: 2px solid rgb(15, 99, 31);
+    background: white;
+    display: flex inline;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.support ul li a{
+    background: white;
+    color:rgb(10, 83, 24); 
+    text-decoration: none;
+}
+
+.support ul li a:hover{
+    color: #5ae4a8;
+}
+
+.support ul li img{
+    border-right: 2px solid rgb(15, 99, 31);
+    width: 50px;
+    margin-right: 10px;
+}
+
+.main-content-contact{
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    height: 87%;
+    width: 100%;
+}
+
+.contact_us{
+    background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact_us img{
+    width: 600px;
+}
+
+.contact_us ul{
+    background: white;
+}
+
+.contact_us li{
+    display: flex;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style-type: none;
+    color:rgb(23, 135, 44);
+    margin-bottom: 5px;
+    background: white;
+}
+
+.contact_us li a{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    color:rgb(23, 135, 44);
+    text-decoration: none;
+}
+
+.contact_us ul h2{
+    font-weight: 500;
+    font-size: 30px;
+    background: white;
+    color:rgb(15, 99, 31);
+    margin-bottom: 15px;
+}
+
+.contact_us li img{
+    width: 20px;
+    margin-right: 10px;
+    background: white;
+}
+
+.divide-lines p{
+    background: white;
+    color: rgb(23, 135, 44);
+    margin-top: 25px;
+}
+
+.divide-lines p:before, 
+.divide-lines p:after{
+    background-color: rgb(23, 135, 44);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 32%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.social-media{
+    background: white;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.social-media img{
+    background: white;
+    width: 35px;
+}
+
+.register-card{
+    height: 80%;
+    background: white;
+} 
+
+.register-card-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: rgb(15, 99, 31);
+}
+
+.register-card-form input{
+    margin-top: 35px;
+}
+
+.register-card-form-row-1{
+    display: flex;
+    flex-direction: row;
+    background: white;
+}   
+
+.register-card-form-row-1 input{
+    margin-right: 10px;
+    width: 250px;
+    padding: 2px;
+    border-bottom: 1px solid black;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    background: white;
+}
+
+.register-card-form-row-1 input:focus{
+    box-shadow: 0 0 0 0;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+
+
+.register-card-form-row-endereco{
+    background: white;
+
+}
+
+.register-card-form-row-endereco input{
+    width: 400px;
+}
+
+.register-card-form-row-numero{
+    background: white;
+}
+
+.register-card-form-row-numero input{
+    width: 100px;
+    
+}
+
+.register-card h1{
+   display: flex;
+   justify-content: center;
+   background: white;
+   color: rgb(15, 99, 31);
+   font-size: 40px;
+}
+
+.btn-cadastrar{
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    background: #1a2e35;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    color:#5ae4a8;
+}
+
+.btn-cadastrar:hover{
+    cursor: pointer;
+    background: #5ae4a8;
+    color: #1a2e35;
+    border: 1px solid black;
+}
+
+input.error::placeholder {
+    color: red;
+}
+
+.login-card{
+    background: None;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.login-card img{
+    width: 510px;
+}
+
+.login-card-form{
+    background: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-card-form-row-1{
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card-form-row-1 .text-input{
+    background: none;
+    border-left: none; 
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.login-card-form-row-1 .text-input:focus{
+    box-shadow: 0 0 0 0;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+.btn-login{
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    background: #1a2e35;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    color:#5ae4a8;
+}
+
+.btn-login:hover{
+    cursor: pointer;
+    background: #5ae4a8;
+    color: #1a2e35;
+    border: 1px solid black;
+}

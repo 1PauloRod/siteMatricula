@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+    <a href= "{% url "logout" %}">logout</a>
+    <br>
+    <a href="{% url 'school_data' %}">escola</a>
+    <br>
+    <a href="{% url 'students' %}">alunos</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block contentCard %}
+    <div class="login-card">
+        <img src="{% static 'img/login.jpg' %}">
+        <form class="login-card-form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+           
+            <div class="login-card-form-row-1">
+                <input class="text-input" name="email-escola" type="email" placeholder="email">
+                <input class="text-input" name="senha-escola" type="password" placeholder="senha">
+                <input class="btn-login" type="submit" value="logar">
+            </div>
+            
+        </form>
+
+    </div> 
+ 
+{% endblock %}

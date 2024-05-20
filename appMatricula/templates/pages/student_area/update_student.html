@@ -1,0 +1,38 @@
+{% extends "pages/student_area/student_area.html" %}
+{% load static %}
+
+{% block content_student %}
+        <form class="update-student" action="{% url "edit_student" student.id %}" method="POST">
+            {% csrf_token %}
+            <input name="nome-aluno" type="text" placeholder="nome" value="{{student.nome}}">
+            <input name="endereco-aluno" type="text" placeholder="endereco" value="{{student.endereco.endereco}}">
+            <input name="numero-aluno" type="text" placeholder="numero" value="{{student.endereco.numero}}">
+            <input name="bairro-aluno" type="text" placeholder="bairro" value="{{student.endereco.bairro}}">
+            <input name="cidade-aluno" type="text" placeholder="cidade" value="{{student.endereco.cidade}}">
+            <input name="cep-aluno" type="text" placeholder="cep" id="mask-cep" maxlength="9" value="{{student.endereco.cep}}">
+            <input name="sexo-aluno" type="text" placeholder="sexo" value="{{student.sexo}}">
+            <input name="data-aniversario-aluno" type="text" placeholder="aniversario" id="mask-bday" maxlength="10" value="{{student.aniversario}}">
+            <input name="telefone-aluno" type="text" placeholder="telefone" id="mask-telefone" maxlength="14" value="{{student.telefone}}">
+            <input name="cpf-aluno" type="text" placeholder="cpf" id="mask-cpf" maxlength="14" value="{{student.cpf}}">
+            <input name="rg-aluno" type="text" placeholder="rg" id="mask-rg" maxlength="12" value="{{student.rg}}">
+            <input name="orgao-emissor-aluno" type="text" placeholder="orgao emissor" value="{{student.orgao_emissor}}"> 
+            <input name="email-aluno" type="text" placeholder="email" value="{{student.email}}">
+            <input name="mae-aluno" type="text" placeholder="mae" value="{{student.mae}}">
+            <input name="pai-aluno" type="text" placeholder="pai" value="{{student.pai}}">
+
+        <input type="submit">
+
+        </form>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/mask_cep.js' %}"></script>
+    <script src="{% static 'script/mask_cpf.js' %}"></script>
+    <script src="{% static 'script/mask_rg.js' %}"></script>
+    <script src="{% static 'script/mask_number.js' %}"></script>
+    <script src="{% static 'script/mask_bday.js' %}"></script>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,29 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+{% block title %}
+    <title>welcome</title>    
+{% endblock %}
+
+{% block contentCard %}
+    <nav class="navbar-menu">
+        <ul>
+            <li class="selected-list"><a>Home</a></li>
+            <li class="no-selected-list"><a href="{% url "service" %}">Serviços</a></li>
+            <li class="no-selected-list"><a href="{% url "about_us" %}">Sobre nós</a></li>
+            <li class="no-selected-list"><a href="{% url "support" %}">Suporte</a></li>
+            <li class="no-selected-list"><a href="{% url "contact_us" %}">Contato</a></li>
+        </ul>
+    </nav>
+        
+        <div class="main-content">
+            <div class="left-content">
+                <img class="database-img" alt="database logo" src="{% static "img/databaseImg.jpg" %}">
+            </div>
+            <div class="right-content">
+                <h2>Sua escola na palma da mão</h2>
+                <h3>Controle tudo o que você precisa em um só lugar.</h3>
+                <a class="btn-get-started" href="{% url "register" %}">Comece já</a>
+            </div>
+        </div>
+{% endblock %}

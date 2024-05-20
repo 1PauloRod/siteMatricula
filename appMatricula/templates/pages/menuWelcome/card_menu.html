@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cardMenu.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card-menu">
+        {% block contentCard %}
+        {% endblock %}
+    </div>
+{% endblock %}

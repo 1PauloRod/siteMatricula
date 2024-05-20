@@ -1,0 +1,27 @@
+{% extends 'pages/menuWelcome/card_menu.html' %}
+{% load static %}
+
+
+{% block contentCard %}
+    <nav class="navbar-menu">
+        <ul>
+            <li class="no-selected-list"><a href="{% url "welcome" %}">Home</a></li>
+            <li class="no-selected-list"><a href="{% url "service" %}">Serviços</a></li>
+            <li class="selected-list"><a>Sobre nós</a></li>
+            <li class="no-selected-list"><a href="{% url "support" %}">Suporte</a></li>
+            <li class="no-selected-list"><a href="{% url "contact_us" %}">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="about_us">
+            <img alt="me" src="{% static "img/me.png" %}">
+        
+            <p>Apenas um estudante de engenharia da computação desenvolvendo
+                o frontend e backend de uma aplicação de cadastro escolar completo.
+                O intuito desse site é o aprendizado no 
+                desenvolvimento de uma aplicação Web completa.</p>
+            
+        </div>
+    </div>
+{% endblock %}
