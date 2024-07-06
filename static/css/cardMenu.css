@@ -501,9 +501,16 @@ input.error::placeholder {
     margin-bottom: 45px;
 }
 
-
-
 .error-message ul li{
     background: white;
     list-style: none;
+}
+
+.footer{
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(125, 115, 115);
 }

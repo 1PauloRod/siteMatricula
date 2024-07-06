@@ -78,23 +78,6 @@ def login_user(request):
             
     return render(request, 'pages/login.html', {'form': form})
     
-    '''if request.method == "GET":
-        return render(request, "pages/login.html")
-    
-    email = request.POST.get("email-escola")
-    password = request.POST.get("senha-escola")
-    
-    user = authenticate(request, username=email, password=password)
-    
-    print(user)
-    
-    if user is not None:
-        login(request, user)
-        return redirect("home")
-    else:
-        return redirect("login")'''
-    
-    
 def logout_user(request):
     logout(request)
     return redirect('welcome')
@@ -120,7 +103,7 @@ def student_area(request):
     userEscola = CustomUser.objects.get(email=get_user(request))
     escolaAluno = Escola.objects.get(userEscola=userEscola)
     alunos = Aluno.objects.filter(escola=escolaAluno)
-    print(alunos)
+    
     return render(request, "pages/student_area/student_area.html", {"alunos": alunos})
 
 @login_required(login_url="/login")
@@ -167,17 +150,58 @@ def search_student(request):
 @login_required(login_url="/login")
 def edit_student(request, student_id):
     student = Aluno.objects.get(id=student_id)
-    print(student.sexo)
     if request.method == "GET":
         return render(request, "pages/student_area/update_student.html", {"student": student})
     
-    nomeAluno = request.POST.get("nome-aluno") 
+    nomeAluno = request.POST.get("nome-aluno")
+    sexoAluno = request.POST.get("sexo-aluno") 
+    aniversarioAluno = request.POST.get("data-aniversario-aluno")
+    telefoneAluno = request.POST.get("telefone-aluno")
+    cpfAluno = request.POST.get("cpf-aluno")
+    rgAluno = request.POST.get("rg-aluno")
+    orgaoEmissorAluno = request.POST.get("orgao-emissor-aluno")
+    emailAluno = request.POST.get("email-aluno")
+    maeAluno = request.POST.get("mae-aluno")
+    paiAluno = request.POST.get("pai-aluno")
+    
+    cepAluno = request.POST.get("cep-aluno")
+    cidadeAluno = request.POST.get("cidade-aluno")
+    bairroAluno = request.POST.get("bairro-aluno")
+    enderecoAluno = request.POST.get("endereco-aluno")
+    numeroAluno = request.POST.get("numero-aluno")
+    complementoAluno = request.POST.get("complemento-aluno")
+    
+    print(student.pai)
+    
     student.nome = nomeAluno
-    '''
-        colocar os outros valores
-    '''
+    student.sexo = sexoAluno
+    student.aniversario = aniversarioAluno
+    student.telefone = telefoneAluno
+    student.cpf = cpfAluno
+    student.rg = rgAluno
+    student.orgao_emissor = orgaoEmissorAluno
+    student.email = emailAluno
+    student.mae = maeAluno
+    student.pai = paiAluno
+    
+    student.endereco.cep = cepAluno
+    student.endereco.cidade = cidadeAluno
+    student.endereco.bairro = bairroAluno
+    student.endereco.endereco = enderecoAluno
+    student.endereco.numero = numeroAluno
+    student.endereco.complemento = complementoAluno
+    
     student.save()
+    student.endereco.save()
     return redirect("students")
+
+
+@login_required(login_url="/login")
+def delete_student(request, student_id):
+    student = Aluno.objects.get(id=student_id)
+    student.delete()
+    return redirect('students')
+    
     
 
     

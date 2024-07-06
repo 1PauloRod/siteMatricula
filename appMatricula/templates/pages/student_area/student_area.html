@@ -34,13 +34,17 @@
         
         {% for aluno in alunos %}
             <div class="students-info">
-                <p>{{aluno.nome}} - {{aluno.matricula}}</p>
+                <a href="{% url 'edit_student' aluno.id %}">{{aluno.nome}} - {{aluno.matricula}}</a>
             </div>
             
         {% endfor %}
     </div>
     
     {% endblock %}
+
+    <footer class="footer">
+        <p> Created by Paulo Rodrigues </p>
+    </footer>
     
 {% endblock %}
 

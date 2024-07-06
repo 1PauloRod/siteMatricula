@@ -11,7 +11,7 @@
             
                 <div class="register-card-form-row-1">
                     <input name="nome-aluno" type="text" placeholder="nome" value="{{student.nome}}">
-                    <select id="choices" name="choices">
+                    <select id="choices" name="sexo-aluno">
                         {% if student.sexo == "M"%}
                         <option value="{{student.sexo}}" selected >Masculino</option>
                         <option value="{{student.sexo}}">Feminino</option>
@@ -27,9 +27,9 @@
                 <input name="cpf-aluno" type="text" placeholder="cpf" id="mask-cpf" maxlength="14" value="{{student.cpf}}">
                 <input name="rg-aluno" type="text" placeholder="rg" id="mask-rg" maxlength="12" value="{{student.rg}}">
                 <input name="orgao-emissor-aluno" type="text" placeholder="orgao emissor" value="{{student.orgao_emissor}}"> 
-                <input name="email-aluno" type="text" placeholder="email" value="{{student.email}}">
+                <input name="email-aluno" type="email" placeholder="email" value="{{student.email}}">
                 <input name="mae-aluno" type="text" placeholder="mae" value="{{student.mae}}">
-                <input name="pai-aluno" type="text" placeholder="pai" value="{{student.pai }}">
+                <input name="pai-aluno" type="text" placeholder="pai" value="{{student.pai}}">
             </div>
 
             <div class="address-info">
@@ -41,9 +41,11 @@
                 <input name="numero-aluno" type="text" placeholder="numero" value="{{student.endereco.numero}}">
                 <input name="complemento-aluno" type="text" placeholder="Complemento" value="{{student.endereco.complemento}}">
             </div>
-            <button class="btn-register-student">Salvar</button>
 
-            <h1>LEMBRETE SALVAR OS DADOS NA VIEW</h1>
+            <div class="buttons">
+                <button class="btn-save-student">Salvar</button>
+                <a class="btn-delete-student" href="{% url "delete_student" student.id %}">Deletar</a>
+            </div>
 
         </form>
     </div>
