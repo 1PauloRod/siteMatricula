@@ -9,15 +9,42 @@
 {% block contentCard %}
     <div class="login-card">
         <img src="{% static 'img/login.jpg' %}">
-        <form class="login-card-form" action="{% url 'login' %}" method="POST">
+        <form class="login-card-form" method="POST">
             {% csrf_token %}
-           
             <div class="login-card-form-row-1">
-                <input class="text-input" name="email-escola" type="email" placeholder="email">
+                <h1>Login</h1>
+                
+                <div class="error-message">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                    {{form.email}}
+                    {{form.password}}
+
+                    <button class="btn-login" type="submit">Logar</button>
+                <div class="login-link">
+                    <p>Não tem cadastro? <a href="{% url 'register' %}">Cadastre-se!</a></p>
+                </div>
+
+            </div>
+
+    
+                <!--<input class="text-input" name="email-escola" type="email" placeholder="email">
                 <input class="text-input" name="senha-escola" type="password" placeholder="senha">
                 <input class="btn-login" type="submit" value="logar">
-            </div>
-            
+                <div class="login-link">
+                    <p>Não tem cadastro? <a href="{% url 'register' %}">Cadastre-se!</a></p>
+                </div>
+            </div> -->
         </form>
 
     </div> 

@@ -6,11 +6,84 @@
     <title>Dados escola</title>
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/school_data.css' %}">
+{% endblock %}
 
 {% block content %}
-    {{escola.nome}}
-    <br>
-    {{escola.endereco.cidade}}
-    <br>
-    {{escola.endereco.bairro}}
+
+    <div class="navbar">
+        <div class="btn-logout">
+            <a href= "{% url "logout" %}"><img src="{% static 'img/exit.png' %}"></a>
+        </div>
+    </div>
+
+    
+    <div class="main-content">
+        <form class="info-school-form">
+            {% csrf_token %}
+
+            <ul>
+                <li>
+                    <label><strong>Nome:</strong> {{escola.nome}}</label>
+                </li>
+
+                <li>
+                    <label><strong>CNPJ</strong>: {{escola.cnpj}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Email:</strong> {{escola.userEscola.email}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Telefone:</strong> {{escola.telefone}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Data fundação:</strong> {{escola.dataFundacao}}</label>
+                </li>
+
+                <li>
+                    <label><strong>CEP:</strong> {{escola.endereco.cep}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Cidade:</strong> {{escola.endereco.cidade}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Número:</strong> {{escola.endereco.numero}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Bairro:</strong> {{escola.endereco.bairro}}</label>
+                </li>
+
+                <li>
+                    <label><strong>Complemento:</strong> {{escola.endereco.complemento}}</label>
+                </li>
+            </ul>
+
+            <!--
+            <input type="text" name="nome" value=" Nome: {{escola.nome}}" disabled>
+            <input type="text" name="cnpj" value={{escola.cnpj}} disabled>
+            <input type="email" name="email" value={{escola.userEscola.email}} disabled>
+            <input type="text" name="telefone" value={{escola.telefone}} disabled>
+            <input type="text" name="data-fundacao" value={{escola.telefone}} disabled>
+            <input type="text" name="cep" value={{escola.endereco.cep}} disabled>
+            <input type="text" name="cidade" value={{escola.endereco.cidade}} disabled>
+            <input type="text" name="endereco" value={{escola.endereco.endereco}} disabled>
+            <input type="text" name="numero" value={{escola.endereco.numero}} disabled>
+            <input type="text" name="bairro" value={{escola.endereco.bairro}} disabled>
+            <input type="text" name="complemento" value={{escola.endereco.complemento}} disabled>
+            -->
+        </form>
+    </div>
+    
+
+
+    <footer class="footer">
+        <p> Created by Paulo Rodrigues </p>
+    </footer>
 {% endblock %}

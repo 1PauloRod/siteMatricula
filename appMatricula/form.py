@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from .models import Escola, Endereco, CustomUser, Aluno
+from django.contrib.auth import authenticate
 #from django.contrib.auth.models import User
 
 class EscolaForm(forms.ModelForm):
@@ -44,8 +45,9 @@ class EnderecoForm(forms.ModelForm):
             'endereco':forms.TextInput(attrs={'placeholder':'Endereço', 'required': True}), 
             'numero':forms.TextInput(attrs={'placeholder':'Número', 'required': True}),
             'bairro':forms.TextInput(attrs={'placeholder':'Bairro', 'required': True}),
+            'cep':forms.TextInput(attrs={'id': 'mask-cep', 'placeholder':'CEP', 'required': True}),
             'cidade':forms.TextInput(attrs={'placeholder':'Cidade', 'required': True}), 
-            'complemento':forms.TextInput(attrs={'placeholder':'Complemento'})
+            'complemento':forms.TextInput(attrs={'placeholder':'Complemento', 'required': False})
         }
         
     def clean_cep(self):
@@ -101,6 +103,30 @@ class UserForm(forms.ModelForm):
         return user
         
 
+class LoginForm(forms.ModelForm):
+    
+    class Meta:
+        
+        model = CustomUser
+        fields = ['password', 'email']
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder':'Email', 'required': True}),
+            'password': forms.PasswordInput(attrs={'placeholder':'Senha', 'required': True}) 
+            }
+        
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+        if email and password:
+            user = authenticate(username=email, password=password)
+            if not user:
+                raise forms.ValidationError('Email ou senha inválidos.')
+        else:
+            raise forms.ValidationError('Email ou senha inválidos.')
+        
+        return cleaned_data
+
 class AlunoForm(forms.ModelForm):
     
     class Meta:
@@ -108,7 +134,7 @@ class AlunoForm(forms.ModelForm):
         model = Aluno
         fields = ['nome', 'sexo', 'aniversario', 'telefone', 'cpf', 'rg', 'orgao_emissor', 'email', 'mae', 'pai']
         widgets = {
-            'nome': forms.TextInput(attrs={'placeholder': 'Nome'}), 
+            'nome': forms.TextInput(attrs={'placeholder': 'Nome Completo'}), 
             'telefone': forms.TextInput(attrs={'id': 'mask-telefone', 
                                                'placeholder': 'telefone'}),
            
@@ -126,3 +152,33 @@ class AlunoForm(forms.ModelForm):
             'pai': forms.TextInput(attrs={'placeholder': 'Nome Pai', 
                                           'required': False}),
         }
+        
+    def clean_telefone(self):
+        telefone = self.cleaned_data.get('telefone')
+        if Aluno.objects.filter(telefone=telefone).exists():
+            raise forms.ValidationError("Telefone já existe.")
+        
+        if len(telefone) < 14:
+            raise forms.ValidationError("Telefone inválido.")
+        
+        return telefone
+    
+    def clean_cpf(self):
+        cpf = self.cleaned_data.get('cpf')
+        if Aluno.objects.filter(cpf=cpf).exists():
+            raise forms.ValidationError("CPF já existe.")
+
+        if len(cpf) < 14:
+            raise forms.ValidationError("CPF inválido.")            
+    
+        return cpf
+    
+    def clean_rg(self):
+        rg = self.cleaned_data.get('rg')
+        if Aluno.objects.filter(rg=rg).exists():
+            raise forms.ValidationError("RG já existe.")
+        
+        if len(rg) < 12:
+            raise forms.ValidationError("RG inválido.")
+        
+        return rg

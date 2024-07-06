@@ -3,18 +3,26 @@
 
 {% block content_student %}
     <div class="search-students">
-        <form class="search-student" action="{% url "search_student" %}" method="GET">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
+        <form class="search-student-form" action="{% url "search_student" %}" method="GET">
+            <input type="text" name="query" placeholder="Matrícula ou Nome">
+            <button type="submit">Buscar</button>
         </form>
+
         {% if results %}
-        <h2>Search Results:</h2>
-        <ul>
-            {% for result in results %}
-                <a href="{% url "edit_student" result.id %}"><li>{{ result }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        <div class="search-results">
+            <h3>Resultados:</h3>
+            <ul>
+                {% for result in results %}
+                    <a href="{% url "edit_student" result.id %}"><li>{{ result.nome }}, {{ result.matricula }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% else %}
+            <p>Nenhum resultado encontrado.</p>
+
+        {% endif %}
+
         
     </div>
 {% endblock %}

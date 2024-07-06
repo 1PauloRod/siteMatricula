@@ -3,26 +3,38 @@ from django.contrib.auth import login, logout, authenticate, get_user
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import *
-from .form import EscolaForm, UserForm, EnderecoForm, AlunoForm
+from .form import EscolaForm, UserForm, EnderecoForm, AlunoForm, LoginForm
 from .utils import generateRegisterNumberOfStudent
 # Create your views here.
 
 def welcome(request):
-   return render(request, "pages/menuWelcome/welcome.html")
+    if request.user.is_authenticated:
+        return render(request, "home")
+    return render(request, "pages/menuWelcome/welcome.html")
 
 def service(request):
+    if request.user.is_authenticated:
+        return render(request, "home")
     return render(request, "pages/menuWelcome/service.html")
 
 def about_us(request):
+    if request.user.is_authenticated:
+        return render(request, "home")
     return render(request, "pages/menuWelcome/about_us.html")
 
 def support(request):
+    if request.user.is_authenticated:
+        return render(request, "home")
     return render(request, "pages/menuWelcome/support.html")
 
 def contact(request):
+    if request.user.is_authenticated:
+        return render(request, "home")
     return render(request, "pages/menuWelcome/contact_us.html")
     
 def register_user(request):
+    if request.user.is_authenticated:
+        return render(request, "home")
     if request.method == 'POST':
         escola = EscolaForm(request.POST)
         user_escola = UserForm(request.POST)
@@ -51,7 +63,22 @@ def register_user(request):
 
         
 def login_user(request):
-    if request.method == "GET":
+    if request.user.is_authenticated:
+        return render(request, "home")
+    
+    form = LoginForm(request.POST or None)
+    if request.method == "POST":     
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            
+    return render(request, 'pages/login.html', {'form': form})
+    
+    '''if request.method == "GET":
         return render(request, "pages/login.html")
     
     email = request.POST.get("email-escola")
@@ -65,7 +92,7 @@ def login_user(request):
         login(request, user)
         return redirect("home")
     else:
-        return redirect("login")
+        return redirect("login")'''
     
     
 def logout_user(request):
@@ -93,7 +120,7 @@ def student_area(request):
     userEscola = CustomUser.objects.get(email=get_user(request))
     escolaAluno = Escola.objects.get(userEscola=userEscola)
     alunos = Aluno.objects.filter(escola=escolaAluno)
-        
+    print(alunos)
     return render(request, "pages/student_area/student_area.html", {"alunos": alunos})
 
 @login_required(login_url="/login")
@@ -131,6 +158,8 @@ def search_student(request):
     results = None
     if query:
         results = Aluno.objects.filter(matricula=query)
+        if not results:
+            results = Aluno.objects.filter(nome=query)
     
     return render(request, "pages/student_area/search_student.html", {"results": results})
     
@@ -138,11 +167,15 @@ def search_student(request):
 @login_required(login_url="/login")
 def edit_student(request, student_id):
     student = Aluno.objects.get(id=student_id)
+    print(student.sexo)
     if request.method == "GET":
         return render(request, "pages/student_area/update_student.html", {"student": student})
     
     nomeAluno = request.POST.get("nome-aluno") 
     student.nome = nomeAluno
+    '''
+        colocar os outros valores
+    '''
     student.save()
     return redirect("students")
     

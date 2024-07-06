@@ -6,34 +6,50 @@
     <form class="form-register-students" method="POST">
         {% csrf_token %}
 
-        {{alunoForm.nome}}
-        {{alunoForm.aniversario}}
-        {{alunoForm.sexo}}
-        {{alunoForm.telefone}}
-        {{alunoForm.cpf}}
-        {{alunoForm.rg}}
-        {{alunoForm.orgao_emissor}}
-        {{alunoForm.email}}
-        {{alunoForm.mae}}
-        {{alunoForm.pai}}
-       
+        <div class="student-info">
+            <h3>Informações do Aluno</h3>
+
+            <div class="register-card-form-row-1">
+                {{alunoForm.nome}}
+                {{alunoForm.sexo}}
+            </div>
+            {{alunoForm.aniversario}}
+
+            <input type="text" name="telefone" id="mask-telefone" maxlength=14 required
+                        placeholder="{% if alunoForm.telefone.errors %}{{ alunoForm.telefone.errors|first }}{% else %}Telefone{% endif %}"
+                        class="{% if alunoForm.telefone.errors %}error{% endif %}">
+
+            <input type="text" name="cpf" id="mask-cpf" maxlength=14 required
+                placeholder="{% if alunoForm.cpf.errors %}{{ alunoForm.cpf.errors|first }}{% else %}CPF{% endif %}"
+                class="{% if alunoForm.cpf.errors %}error{% endif %}">
+
+                <input type="text" name="rg" id="mask-rg" maxlength=12 required
+                placeholder="{% if alunoForm.rg.errors %}{{ alunoForm.rg.errors|first }}{% else %}rg{% endif %}"
+                class="{% if alunoForm.rg.errors %}error{% endif %}">
+
+
+            {{alunoForm.orgao_emissor}}
+            {{alunoForm.email}}
+            {{alunoForm.mae}}
+            {{alunoForm.pai}}
+        </div>
+
+        <div class="address-info">
+            <h3>Endereço</h3>
+
+            <input type="text" name="cep" id="mask-cep" maxlength=12 required
+            placeholder="{% if alunoEnderecoForm.cep.errors %}{{ alunoEnderecoForm.cep.errors|first }}{% else %}CEP{% endif %}"
+            class="{% if alunoEnderecoForm.cep.errors %}error{% endif %}">
+
+            {{alunoEnderecoForm.cidade}}
+            {{alunoEnderecoForm.bairro}}
+            {{alunoEnderecoForm.endereco}}
+            {{alunoEnderecoForm.numero}}
+            {{alunoEnderecoForm.complemento}}
         
-        {{alunoEnderecoForm.endereco}}
-        {{alunoEnderecoForm.numero}}
-        {{alunoEnderecoForm.bairro}}
-        {{alunoEnderecoForm.cep}}
-        {{alunoEnderecoForm.cidade}}
-
-        {% if alunoForm.errors %}
-            <p>{{alunoForm.errors}}</p>
-        {% endif %}
-
-        {% if alunoEnderecoForm.errors %}
-            <p>{{alunoEnderecoForm.errors}}</p>
-        {% endif %}
+        </div>
+        <button class="btn-register-student">Cadastrar</button>
         
-
-        <input type="submit">
     </form>
 </div>
 {% endblock %}

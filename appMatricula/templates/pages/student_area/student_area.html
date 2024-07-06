@@ -6,22 +6,36 @@
     <title>alunos</title>
 {% endblock %}
 
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/student_area.css' %}">
+{% endblock %}
 
 {% block content %}
-<a href= "{% url "logout" %}">logout</a>
-    <nav>
+
+    <div class="navbar">
+        <div class="btn-logout">
+            <a href= "{% url "logout" %}"><img src="{% static 'img/exit.png' %}"></a>
+        </div>
+    </div>
+
+
+    <div class="options-students">
         <ul>
-            <li><a href="{% url "students" %}">Alunos</a></li>
-            <li><a href="{% url "register_student" %}">cadastrar Aluno</a></li>
-            <li><a href="{% url "search_student" %}">atualiza Aluno</a></li>
+            <li class="{% if '/alunos/' == request.path %}class-option-selected{% else %}class-option{% endif %}"><a href="{% url "students" %}">Alunos</a></li>
+            <li class="{% if '/alunos/cadastra_aluno' == request.path %}class-option-selected{% else %}class-option{% endif %}"><a href="{% url "register_student" %}">Cadastrar Aluno</a></li>
+            <li class="{% if '/alunos/busca_aluno' == request.path %}class-option-selected{% else %}class-option{% endif %}"><a href="{% url "search_student" %}">Busca Aluno</a></li>
         </ul>
-    </nav>
+    </div>
 
     {% block content_student %}
+
+
     <div class="show-students">
         
         {% for aluno in alunos %}
-            {{aluno.nome}}, {{aluno.matricula}}<br>
+            <div class="students-info">
+                <p>{{aluno.nome}} - {{aluno.matricula}}</p>
+            </div>
             
         {% endfor %}
     </div>

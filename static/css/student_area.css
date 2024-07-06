@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;   
+   font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar{
+    background: rgb(15, 99, 31);
+    height: 40px;
+    border-bottom: 2px solid black;
+}
+
+.btn-logout{
+    display: flex;
+    width: 95%;
+    padding-top: 5px;
+    justify-content: end;
+}
+
+.btn-logout img{
+    width: 32px;
+}
+
+.error::placeholder{
+    color: red;
+}
+
+.register-students{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 700px;   
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-register-students{
+   margin-left: 35px;
+}
+
+.register-students input{
+    margin-bottom: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+.register-students input:focus{
+    outline: none;
+}
+
+.register-students h3{
+    margin-bottom: 10px;
+}
+
+.register-card-form-row-1 input{
+    width: 75%;
+}
+
+.address-info{
+    margin-top: 15px;
+}
+
+.btn-register-student{
+    border: 2px solid black;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+    width: 75px;
+    height: 30px;
+    font-weight: 700;
+}
+
+.btn-register-student:hover{
+    cursor: pointer;
+}
+
+.options-students{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+
+.options-students ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.options-students ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.class-option-selected a{
+    border-bottom: 2px solid rgb(15, 99, 31);
+}
+
+.show-students{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    width: 700px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.show-students::-webkit-scrollbar{
+    width: 10px;
+}
+
+.show-students::-webkit-scrollbar-thumb{
+    background-color: rgb(174, 168, 168);
+    border-radius: 20px;
+}
+
+.students-info{
+    border-bottom: 1px solid rgb(153, 147, 147);
+}
+
+.students-info p{
+    margin-left: 15px;
+}
+
+.search-students{
+    position: relative;
+    width: 700px;
+    height: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    border-radius: 15px;
+    overflow-y: auto;
+}
+
+.search-students::-webkit-scrollbar{
+    width: 10px;
+}
+
+.search-students::-webkit-scrollbar-thumb{
+    background-color: rgb(174, 168, 168);
+    border-radius: 20px;
+}
+
+.search-student-form{
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.search-results h3{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.search-results ul li{
+    margin-left: 45px;
+}
+
+.update-student{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    width: 700px;
+    height: 400px;
+}

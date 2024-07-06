@@ -2,27 +2,51 @@
 {% load static %}
 
 {% block content_student %}
-        <form class="update-student" action="{% url "edit_student" student.id %}" method="POST">
+    <div class="register-students">
+        <form class="form-register-students" action="{% url "edit_student" student.id %}" method="POST">
             {% csrf_token %}
-            <input name="nome-aluno" type="text" placeholder="nome" value="{{student.nome}}">
-            <input name="endereco-aluno" type="text" placeholder="endereco" value="{{student.endereco.endereco}}">
-            <input name="numero-aluno" type="text" placeholder="numero" value="{{student.endereco.numero}}">
-            <input name="bairro-aluno" type="text" placeholder="bairro" value="{{student.endereco.bairro}}">
-            <input name="cidade-aluno" type="text" placeholder="cidade" value="{{student.endereco.cidade}}">
-            <input name="cep-aluno" type="text" placeholder="cep" id="mask-cep" maxlength="9" value="{{student.endereco.cep}}">
-            <input name="sexo-aluno" type="text" placeholder="sexo" value="{{student.sexo}}">
-            <input name="data-aniversario-aluno" type="text" placeholder="aniversario" id="mask-bday" maxlength="10" value="{{student.aniversario}}">
-            <input name="telefone-aluno" type="text" placeholder="telefone" id="mask-telefone" maxlength="14" value="{{student.telefone}}">
-            <input name="cpf-aluno" type="text" placeholder="cpf" id="mask-cpf" maxlength="14" value="{{student.cpf}}">
-            <input name="rg-aluno" type="text" placeholder="rg" id="mask-rg" maxlength="12" value="{{student.rg}}">
-            <input name="orgao-emissor-aluno" type="text" placeholder="orgao emissor" value="{{student.orgao_emissor}}"> 
-            <input name="email-aluno" type="text" placeholder="email" value="{{student.email}}">
-            <input name="mae-aluno" type="text" placeholder="mae" value="{{student.mae}}">
-            <input name="pai-aluno" type="text" placeholder="pai" value="{{student.pai}}">
 
-        <input type="submit">
+            <div class="student-info">
+                <h3>Informações do Aluno</h3>
+            
+                <div class="register-card-form-row-1">
+                    <input name="nome-aluno" type="text" placeholder="nome" value="{{student.nome}}">
+                    <select id="choices" name="choices">
+                        {% if student.sexo == "M"%}
+                        <option value="{{student.sexo}}" selected >Masculino</option>
+                        <option value="{{student.sexo}}">Feminino</option>
+                        {% else %}
+                        <option value="{{student.sexo}}" >Masculino</option>
+                        <option value="{{student.sexo}}" selected >Feminino</option>
+                        {% endif %}
+                    </select>
+                </div>
+                
+                <input name="data-aniversario-aluno" type="text" placeholder="aniversario" id="mask-bday" maxlength="10" value="{{student.aniversario}}">
+                <input name="telefone-aluno" type="text" placeholder="telefone" id="mask-telefone" maxlength="14" value="{{student.telefone}}">
+                <input name="cpf-aluno" type="text" placeholder="cpf" id="mask-cpf" maxlength="14" value="{{student.cpf}}">
+                <input name="rg-aluno" type="text" placeholder="rg" id="mask-rg" maxlength="12" value="{{student.rg}}">
+                <input name="orgao-emissor-aluno" type="text" placeholder="orgao emissor" value="{{student.orgao_emissor}}"> 
+                <input name="email-aluno" type="text" placeholder="email" value="{{student.email}}">
+                <input name="mae-aluno" type="text" placeholder="mae" value="{{student.mae}}">
+                <input name="pai-aluno" type="text" placeholder="pai" value="{{student.pai }}">
+            </div>
+
+            <div class="address-info">
+                <h3>Endereço</h3>
+                <input name="cep-aluno" type="text" placeholder="cep" id="mask-cep" maxlength="9" value="{{student.endereco.cep}}">
+                <input name="cidade-aluno" type="text" placeholder="cidade" value="{{student.endereco.cidade}}">
+                <input name="bairro-aluno" type="text" placeholder="bairro" value="{{student.endereco.bairro}}">
+                <input name="endereco-aluno" type="text" placeholder="endereco" value="{{student.endereco.endereco}}">
+                <input name="numero-aluno" type="text" placeholder="numero" value="{{student.endereco.numero}}">
+                <input name="complemento-aluno" type="text" placeholder="Complemento" value="{{student.endereco.complemento}}">
+            </div>
+            <button class="btn-register-student">Salvar</button>
+
+            <h1>LEMBRETE SALVAR OS DADOS NA VIEW</h1>
 
         </form>
+    </div>
 {% endblock %}
 
 {% block script %}

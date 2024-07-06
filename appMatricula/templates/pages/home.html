@@ -5,10 +5,33 @@
     <title>Home</title>
 {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
-    <a href= "{% url "logout" %}">logout</a>
-    <br>
-    <a href="{% url 'school_data' %}">escola</a>
-    <br>
-    <a href="{% url 'students' %}">alunos</a>
+
+    <div class="navbar">
+        <div class="btn-logout">
+            <a href= "{% url "logout" %}"><img src="{% static 'img/exit.png' %}"></a>
+        </div>
+    </div>
+    
+    
+    <div class="options">
+
+        
+        <a href="{% url 'school_data' %}" class="school-option">
+            ESCOLA
+        </a>
+
+        <a href="{% url 'students' %}" class="students-option">
+        ALUNOS
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p> Created by Paulo Rodrigues </p>
+    </footer>
+
 {% endblock %}

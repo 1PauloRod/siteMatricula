@@ -85,8 +85,30 @@
     flex-direction: column;
     background: white;
     width: 100%;
-    height: 50%;
-    margin-bottom: 20px;
+    height: 60%;
+    margin-bottom: 10px;
+}
+
+.login-link{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    background: none;
+    font-size: 13.5px;
+}
+
+.login-link p{
+    background: none;
+}
+
+.login-link a{
+    background: none;
+    color:  #169d43;
+    font-weight: 700;
+}
+
+.login-link a:hover{
+    color:  #05e44f;
 }
 
 .main-content h3{
@@ -127,6 +149,8 @@
     color: #1a2e35;
     border: 1px solid black;
 }
+
+
 
 .main-content ul{
     display: flex;
@@ -424,13 +448,21 @@ input.error::placeholder {
 }
 
 .login-card-form-row-1{
+    color: rgb(15, 99, 31);
     background: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
-.login-card-form-row-1 .text-input{
+.login-card-form-row-1 h1{
+    background: none;
+    margin-bottom: 45px;
+    font-size: 40px;
+}
+
+.login-card-form-row-1 input{
     background: none;
     border-left: none; 
     border-top: none;
@@ -440,7 +472,7 @@ input.error::placeholder {
     margin-bottom: 20px;
 }
 
-.login-card-form-row-1 .text-input:focus{
+.login-card-form-row-1 input:focus{
     box-shadow: 0 0 0 0;
     border-bottom: 2px solid black;
     outline: none;
@@ -462,4 +494,16 @@ input.error::placeholder {
     background: #5ae4a8;
     color: #1a2e35;
     border: 1px solid black;
+}
+
+.error-message{
+    color: red;
+    margin-bottom: 45px;
+}
+
+
+
+.error-message ul li{
+    background: white;
+    list-style: none;
 }
